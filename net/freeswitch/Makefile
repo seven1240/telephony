@@ -1039,7 +1039,7 @@ $(eval $(call BuildPlugin,sms,SMS,vanilla,,,,))
 $(eval $(call BuildPlugin,smpp,smpp client and server implementation,vanilla,,,,@BROKEN))
 $(eval $(call BuildPlugin,snapshot,Record Audio Snapshot to File,vanilla,,,,))
 $(eval $(call BuildPlugin,sndfile,Multi-Format Sound File,vanilla,,,,+libsndfile))
-$(eval $(call BuildPlugin,snmp,SNMP AgentX Subagent,vanilla,,,,+libnetsnmp))
+#$(eval $(call BuildPlugin,snmp,SNMP AgentX Subagent,vanilla,,,,+libnetsnmp @BROKEN))
 $(eval $(call BuildPlugin,snom,SNOM specific features,vanilla,,,,))
 $(eval $(call BuildPlugin,sofia,SOFIA SIP,mod,,,,)) # ~/conf
 $(eval $(call BuildPlugin,sonar,Sonar Ping Timer,vanilla,,,,))
