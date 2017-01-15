@@ -111,7 +111,6 @@ FS_MOD_AVAILABLE:= \
 	h323 \
 	hash \
 	hiredis \
-	html5 \
 	httapi \
 	http-cache \
 	ilbc \
@@ -982,7 +981,6 @@ $(eval $(call BuildPlugin,h26x,H26X Linear Codec,vanilla,,,,))
 $(eval $(call BuildPlugin,h323,H323 Endpoint,mod,,,,@BROKEN)) # Req. H323Plus v1.24.x or newer
 $(eval $(call BuildPlugin,hash,API For Manipulating A Hash Table,vanilla,,,,))
 $(eval $(call BuildPlugin,hiredis,Redis DB access,vanilla,,,,+hiredis @BROKEN))
-#$(eval $(call BuildPlugin,html5,HTML5 Endpoint Module,vanilla,,,,)) # defunct?
 $(eval $(call BuildPlugin,httapi,HT Telephony API and HTTP Caching,mod,,,,)) # ~/conf
 $(eval $(call BuildPlugin,http-cache,HTTP GET With Caching,mod,,,,+libcurl)) # ~/conf
 $(eval $(call BuildPlugin,ilbc,ILBC Codec,vanilla,,,,+libilbc @BROKEN)) # Requires unsupported libilbc.
