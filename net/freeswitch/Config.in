@@ -4,7 +4,7 @@ menu "Configuration"
   choice
     depends on DEVEL
     prompt "Git HEAD version to use"
-    default FS_WITH_DEFAULT_HEAD
+    default FS_WITH_LATEST_HEAD
     help
 	The existing git HEAD is probably outdated. This option allows
 	OpenWRT to pull the latest git HEAD. Please ONLY enable this
