@@ -20,18 +20,19 @@
 +		#export apr_cv_process_shared_works=no
  		export apr_cv_mutex_robust_shared=yes
  	 ;;
-     esac
-@@ -409,9 +409,6 @@ elif test "x${ax_cv_c_compiler_vendor}"
+ 
+@@ -442,10 +442,6 @@ elif test "x${ax_cv_c_compiler_vendor}"
      APR_ADDTO(SWITCH_AM_CFLAGS, -fPIC)
      APR_ADDTO(SWITCH_AM_CXXFLAGS, -fPIC)
      AC_SUBST([AM_MOD_AVMD_CXXFLAGS], [-std=gnu99])      # FS-8809, needed for MAP_POPULATE
 -    if test "$ac_cv_gcc_supports_w_no_unused_result" = yes; then
 -      APR_ADDTO(SWITCH_AM_CFLAGS, -Werror)
+-      APR_ADDTO(SWITCH_AM_CFLAGS, -Wno-unused-result)
 -    fi
-     if test "${enable_64}" = "yes"; then
- 	case "$host" in
-              *darwin*)
-@@ -912,7 +909,6 @@ AC_CHECK_LIB(pthread, pthread_setschedpa
+     if test "$ac_cv_gcc_supports_w_no_misleading_indentation" = yes; then
+       APR_ADDTO(SWITCH_AM_CFLAGS, -Wno-misleading-indentation)
+     fi
+@@ -971,7 +967,6 @@ AC_CHECK_LIB(pthread, pthread_setschedpa
  
  AC_CHECK_FUNC(socket, , AC_CHECK_LIB(socket, socket))
  
@@ -39,7 +40,7 @@
  AC_CHECK_LIB(util, openpty, [AC_DEFINE(HAVE_OPENPTY, 1, [Define if you have openpty()])])
  
  AC_CHECK_MEMBERS([struct tm.tm_gmtoff],,,[
-@@ -1487,16 +1483,16 @@ AM_CONDITIONAL([HAVE_MYSQL],[test "$foun
+@@ -1583,16 +1578,16 @@ AM_CONDITIONAL([HAVE_MYSQL],[test "$foun
  # perl checks
  #
  
@@ -61,7 +62,7 @@
     PERL_LDFLAGS="`$PERL -MExtUtils::Embed -e ldopts| sed -e 's|-arch x86_64 -arch i386||'`"
     PERL_INC="`$PERL -MExtUtils::Embed -e perl_inc`"
  
-@@ -1511,6 +1507,7 @@ if test "x$ac_cv_have_perl" != "xno"; th
+@@ -1607,6 +1602,7 @@ if test "x$ac_cv_have_perl" != "xno"; th
     AC_CHECK_LIB([perl], [perl_alloc], ac_cv_use_libperl=yes, ac_cv_use_libperl=no)
     LDFLAGS="$save_LDFLAGS"
  
@@ -69,7 +70,7 @@
     AC_SUBST(PERL_SITEDIR)
     AC_SUBST(PERL_LIBDIR)
     AC_SUBST(PERL_LIBS)
-@@ -1526,16 +1523,16 @@ AM_CONDITIONAL([HAVE_PERL],[test "x$ac_c
+@@ -1622,16 +1618,16 @@ AM_CONDITIONAL([HAVE_PERL],[test "x$ac_c
  #
  
  AC_CHECK_PROG(PHP,php,[ac_cv_have_php=yes],[ac_cv_have_php=no])
@@ -89,7 +90,7 @@
     PHP_INI_DIR="`$PHP_CONFIG --configure-options | tr " " "\n" | grep -- --with-config-file-scan-dir | cut -f2 -d=`"
     PHP_CFLAGS="`$PHP_CONFIG --includes`"
     AC_SUBST(PHP_LDFLAGS)
-@@ -1569,12 +1566,12 @@ then
+@@ -1665,12 +1661,12 @@ then
  		AC_MSG_RESULT([$with_python])
  		AC_SUBST([PYTHON], ["$with_python"])
  	else
@@ -104,7 +105,7 @@
  
  		if test -z "$PYTHON_VER" ; then
  			AC_MSG_ERROR([Unable to detect python version])
-@@ -1593,12 +1590,12 @@ then
+@@ -1689,12 +1685,12 @@ then
  		if test "$python_has_distutils" != "no" ; then
  			AC_MSG_CHECKING([location of site-packages])
  
@@ -122,7 +123,7 @@
  			fi
  			AC_MSG_RESULT([$PYTHON_SITE_DIR])
  			AC_SUBST([PYTHON_SITE_DIR], [$PYTHON_SITE_DIR])
-@@ -1606,10 +1603,10 @@ then
+@@ -1702,10 +1698,10 @@ then
  			#
  			# python distutils found, get settings from python directly
  			#
