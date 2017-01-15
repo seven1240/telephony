@@ -16,20 +16,20 @@ endif
 PKG_NAME:=freeswitch
 PKG_SOURCE_PROTO:=git
 PKG_DISTNAME:=$(PKG_NAME)_$(PKG_SOURCE_PROTO)
-PKG_VERSION:=1.7.0
+PKG_VERSION:=1.9.0
 
 
 #
 # The latest FS git hash in PKG_SOURCE_VERSION can be obtained from
 # http://fisheye.freeswitch.org
 #
-PKG_SOURCE_URL:=https://$(PKG_NAME).org/stash/scm/fs/$(PKG_NAME).git
+PKG_SOURCE_URL:=https://git.coding.net/dujinfang/FreeSWITCH.git
 PATCH_DIR:=./patches/$(CONFIG_LIBC)
 
 
 FS_WITH_DEFAULT_HEAD:=cc0a062204cb51311619cd37f51b32b2f266729f
 FS_WITH_DEFAULT_HEAD_SHORT:=$(shell echo $(FS_WITH_DEFAULT_HEAD)|cut -b -7)
-PKG_SOURCE_VERSION:=$(if $(CONFIG_FS_WITH_LATEST_HEAD),$(shell git ls-remote $(PKG_SOURCE_URL) HEAD | cut -f1),$(FS_WITH_DEFAULT_HEAD))
+PKG_SOURCE_VERSION:=$(if $(CONFIG_FS_WITH_LATEST_HEAD),$(shell git ls-remote $(PKG_SOURCE_URL) lede | cut -f1),$(FS_WITH_DEFAULT_HEAD))
 PKG_SOURCE_VERSION_SHORT:=$(shell echo $(PKG_SOURCE_VERSION)|cut -b -7)
 PKG_RELEASE:=$(PKG_SOURCE_VERSION_SHORT)
 PKG_SOURCE:=$(PKG_DISTNAME)-$(FS_WITH_DEFAULT_HEAD_SHORT).tar.xz
@@ -258,9 +258,9 @@ endif
 define Package/$(PKG_NAME)/Default
   SECTION:=net
   CATEGORY:=Network
-  SUBMENU:=Telephony
+  SUBMENU:=XYT
   URL:=http://www.$(PKG_NAME).org/
-  MAINTAINER:=Mazi Lo <openwrt.mazilo@recursor.net>
+  MAINTAINER:=Seven Du <dujinfang@gmail.com>
 endef
 
 
